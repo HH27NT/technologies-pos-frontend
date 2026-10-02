@@ -8,6 +8,12 @@ restaurants. This repository contains only the user interface; it needs the API 
 React Hook Form + Zod · Zustand · Tailwind CSS + Radix UI · Recharts · Axios ·
 Vitest + Testing Library · pnpm
 
+![Admin dashboard](docs/screenshots/dashboard.png)
+
+![POS order screen](docs/screenshots/orden.png)
+
+<sub>Screenshots taken with fictional demo data.</sub>
+
 ## Features
 
 - **POS screen** (`/pos`): tables, orders and items, kitchen tickets, discounts,
