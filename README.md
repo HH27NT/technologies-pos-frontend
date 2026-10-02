@@ -86,12 +86,14 @@ docs/           design notes and role matrix
 
 ## Authors
 
-- **Eduardo Palacios Quiroz** — [@LaloP1](https://github.com/LaloP1)
-- **Hector Hugo Naranjo**
+- **Eduardo Palacios Quiroz** — [@LaloP1](https://github.com/LaloP1) — lead developer
+- **Hector Hugo Naranjo** — CI and frontend test setup, responsive layout for narrow screens and full-stack features
+
+Additional contributions by Nicolas Sanchez and carl.
 
 ## License
 
-[MIT](LICENSE) © 2026 Hector Hugo Naranjo and Eduardo Palacios Quiroz
+[MIT](LICENSE) © 2026 Eduardo Palacios Quiroz and Hector Hugo Naranjo
 
 ---
 
@@ -103,4 +105,4 @@ terminal compartida con PIN de mesero; y panel de administración con catálogo,
 caja, usuarios, autorizaciones, auditoría y reportes. Necesita el backend
 (technologies-pos-backend). Arranque: `pnpm install`, copiar `.env.example` a `.env` con
 `VITE_API_URL` apuntando al backend, y `pnpm dev`. Pruebas: `pnpm test` (247 pruebas).
-Proyecto de Eduardo Palacios Quiroz (@LaloP1) y Hector Hugo Naranjo, con licencia MIT.
+Proyecto liderado por Eduardo Palacios Quiroz (@LaloP1), con contribuciones de Hector Hugo Naranjo, con licencia MIT.
