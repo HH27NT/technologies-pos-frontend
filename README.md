@@ -64,8 +64,7 @@ docker compose up --build web    # production build served by Nginx on http://lo
 
 ## Tests
 
-Latest local run: **35 test files, 247 tests passing**; coverage 62.3% statements,
-57.0% branches, 55.6% functions, 63.1% lines. Type-check and production build pass; ESLint
+Latest local run: **35 test files, 247 tests passing**. Type-check and production build pass; ESLint
 reports 0 errors and 2 warnings.
 
 ## Project structure
