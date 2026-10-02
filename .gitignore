@@ -1,0 +1,35 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Entorno local. Las VITE_* se hornean en el bundle y son públicas por definición, pero
+# el archivo no se versiona: en cuanto alguien añada aquí una clave de un servicio de
+# terceros, sin esta regla se iría al repositorio sin que nadie lo note.
+# La plantilla versionada es .env.example.
+.env
+.env.*
+!.env.example
+
+# Coverage de Vitest
+coverage
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

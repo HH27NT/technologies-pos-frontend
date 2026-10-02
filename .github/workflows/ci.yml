@@ -1,0 +1,56 @@
+name: CI
+
+# Pipeline de integración continua del frontend. Espeja al del backend
+# (bar-pos-saas-backend/.github/workflows/ci.yml): ninguna rama protegida debería
+# recibir código sin linter, tipos, pruebas y build en verde.
+#
+# El orden es deliberado, de más barato a más caro: el linter falla en segundos y
+# ahorra los minutos del build cuando el problema es trivial.
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  verificacion:
+    name: Lint + Tipos + Pruebas + Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Corepack toma la versión exacta del campo `packageManager` de package.json,
+      # así que CI y las máquinas de desarrollo usan el mismo pnpm. Va antes de
+      # setup-node porque su caché necesita que pnpm ya exista.
+      - name: Habilitar pnpm
+        run: corepack enable
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      # --frozen-lockfile: si package.json y pnpm-lock.yaml no concuerdan, falla en
+      # vez de resolver versiones nuevas por su cuenta. Sin esto el CI puede pasar
+      # con dependencias distintas a las que corre cualquiera en local.
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Linter (ESLint)
+        run: pnpm lint
+
+      - name: Verificación de tipos (tsc)
+        run: pnpm typecheck
+
+      - name: Pruebas (Vitest)
+        run: pnpm test
+
+      - name: Build de producción
+        run: pnpm build
+        env:
+          # El build hornea las VITE_* en el bundle; se fija un valor para que la
+          # compilación sea representativa (no es un secreto: acaba en el cliente).
+          VITE_API_URL: http://localhost:8080

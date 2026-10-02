@@ -1,0 +1,190 @@
+/* ============================================================================
+   Bar POS SaaS — Design Tokens
+   Marca: ámbar cálido · Superficies: carbón (oscuro) / crema (claro)
+   Display: Bricolage Grotesque · Cuerpo: Inter
+
+   Arquitectura en 2 capas:
+     1) PRIMITIVOS  — paleta cruda, estable entre modos (no cambian).
+     2) SEMÁNTICOS  — lo que consumen los componentes; cambian según el tema.
+
+   Modo: el tema claro es el default (:root) para administración.
+   El POS activa el oscuro poniendo  data-mode="dark"  en su contenedor raíz.
+   ========================================================================== */
+
+/* ---------- 1) PRIMITIVOS (estables entre modos) ---------- */
+:root {
+  /* Ámbar (marca) */
+  --amber-50:  #FCF4E6;
+  --amber-100: #F8E5C2;
+  --amber-200: #F1CE8C;
+  --amber-300: #EBB856;
+  --amber-400: #E5A537;
+  --amber-500: #E39A2B; /* base de marca */
+  --amber-600: #C67F1C; /* hover en claro */
+  --amber-700: #9E6415;
+  --amber-800: #714711;
+  --amber-900: #3A2408; /* texto sobre ámbar */
+
+  /* Neutros cálidos — claros */
+  --cream-page:   #FAF6EF;
+  --cream-card:   #FFFFFF;
+  --cream-raised: #F4EDE1;
+  --cream-line:   #EFE7D9;
+  --cream-border: #E7DECE;
+  --cream-border-strong: #D8CDB8;
+  --ink:   #221C15; /* texto primario claro (casi-negro cálido) */
+  --ink-2: #6B6152; /* texto secundario claro */
+  --ink-3: #9A8F7D; /* texto tenue claro */
+
+  /* Neutros cálidos — oscuros (carbón) */
+  --coal-page: #171310;
+  --coal-0:    #1C1815;
+  --coal-1:    #23201C;
+  --coal-2:    #2B2621;
+  --coal-border:        #3A342D;
+  --coal-border-strong: #4A4239;
+  --bone:   #F4EEE4; /* texto primario oscuro (blanco cálido) */
+  --bone-2: #B7AEA0; /* texto secundario oscuro */
+  --bone-3: #8C8377; /* texto tenue oscuro */
+
+  /* Semántica (hues base) */
+  --green: #4FB07A;  --green-ink: #2E7D52;  --green-bg-lt: #E4F1E8;  --green-bg-dk: #1E3A2C;  --green-dk: #6FCF97;
+  --gold:  #F2C94C;  --gold-ink:  #7A5B0A;  --gold-bg-lt:  #FBF0D0;  --gold-bg-dk:  #3A2E12;
+  --red:   #E5544E;  --red-ink:   #C43D38;  --red-bg-lt:   #FBE6E5;  --red-bg-dk:   #3A1E1C;  --red-dk:  #F08A85;
+  --cyan:  #4A9EB8;  --cyan-ink:  #2E7A93;  --cyan-bg-lt:  #E2F0F4;  --cyan-bg-dk:  #16323B;  --cyan-dk: #6FC2D8;
+
+  /* Tipografía */
+  --font-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Escala tipográfica (app densa: base 14px) */
+  --text-2xs: 0.6875rem; /* 11 */
+  --text-xs:  0.75rem;   /* 12 */
+  --text-sm:  0.8125rem; /* 13 */
+  --text-base:0.875rem;  /* 14 — base UI */
+  --text-md:  0.9375rem; /* 15 */
+  --text-lg:  1.0625rem; /* 17 */
+  --text-xl:  1.375rem;  /* 22 */
+  --text-2xl: 1.75rem;   /* 28 */
+  --text-3xl: 2.25rem;   /* 36 — totales grandes */
+
+  /* Radios */
+  --radius-sm: 8px;   /* controles */
+  --radius:    10px;
+  --radius-lg: 12px;  /* tarjetas */
+  --radius-xl: 16px;  /* contenedores POS */
+  --radius-full: 9999px;
+
+  /* Movimiento */
+  --dur-fast: 120ms;
+  --dur:      180ms;
+  --ease:     cubic-bezier(.2,.6,.2,1);
+
+  /* Objetivo táctil mínimo (POS) */
+  --tap-min: 48px;
+}
+
+/* ---------- 2) SEMÁNTICOS — TEMA CLARO (default · administración) ---------- */
+:root {
+  --surface-0: var(--cream-page);
+  --surface-1: var(--cream-card);
+  --surface-2: var(--cream-raised);
+  --line:      var(--cream-line);
+  --border:        var(--cream-border);
+  --border-strong: var(--cream-border-strong);
+
+  --text-primary:   var(--ink);
+  --text-secondary: var(--ink-2);
+  --text-muted:     var(--ink-3);
+
+  --primary:       var(--amber-500);
+  --primary-hover: var(--amber-600);
+  --on-primary:    var(--amber-900);
+  --accent:        var(--amber-700); /* enlaces / acento de texto (contraste en claro) */
+
+  --success: var(--green-ink);  --success-bg: var(--green-bg-lt); --on-success: #0C3A26;
+  --warning: var(--gold-ink);   --warning-bg: var(--gold-bg-lt);
+  --danger:  var(--red-ink);    --danger-bg:  var(--red-bg-lt);   --on-danger: #FFFFFF;
+  --info:    var(--cyan-ink);   --info-bg:    var(--cyan-bg-lt);
+
+  --ring: var(--amber-500);
+
+  --shadow-sm: 0 1px 2px rgba(33,28,21,.06);
+  --shadow-md: 0 4px 12px rgba(33,28,21,.08);
+
+  --page-bg: var(--surface-0);
+}
+
+/* ---------- 2) SEMÁNTICOS — TEMA OSCURO (POS) ---------- */
+[data-mode="dark"] {
+  --surface-0: var(--coal-0);
+  --surface-1: var(--coal-1);
+  --surface-2: var(--coal-2);
+  --line:      var(--coal-border);
+  --border:        var(--coal-border);
+  --border-strong: var(--coal-border-strong);
+
+  --text-primary:   var(--bone);
+  --text-secondary: var(--bone-2);
+  --text-muted:     var(--bone-3);
+
+  --primary:       var(--amber-500);
+  --primary-hover: var(--amber-300); /* en oscuro el hover aclara */
+  --on-primary:    var(--amber-900);
+  --accent:        var(--amber-300);
+
+  --success: var(--green-dk);  --success-bg: var(--green-bg-dk); --on-success: #0C3A26;
+  --warning: var(--gold);      --warning-bg: var(--gold-bg-dk);
+  --danger:  var(--red-dk);    --danger-bg:  var(--red-bg-dk);   --on-danger: #2A0E0C;
+  --info:    var(--cyan-dk);   --info-bg:    var(--cyan-bg-dk);
+
+  --ring: var(--amber-500);
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.40);
+  --shadow-md: 0 6px 20px rgba(0,0,0,.50);
+
+  --page-bg: var(--coal-page);
+}
+
+/* ---------- Bases mínimas ---------- */
+body {
+  background: var(--page-bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.01em; }
+
+/* Cifras siempre alineadas en columna (precios, totales, kardex) */
+.tabular { font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---------- 6) ESCALA TÁCTIL (tablet / POS) ----------
+   La escala base es de escritorio denso (14px) y a un brazo de distancia
+   funciona; en un tablet que se sostiene con la mano y se toca con el dedo,
+   13px para un label de formulario es ilegible.
+
+   El criterio es el PUNTERO, no el ancho: un iPad Pro en horizontal mide
+   1366px (ancho, pero táctil) y también necesita texto grande, mientras que
+   un monitor de escritorio nunca debe verse afectado. El layout sí se decide
+   por ancho (ver `hidden lg:flex` del Sidebar): cada eje para lo que describe.
+
+   Se comprime la escala: los tamaños chicos suben fuerte y los grandes se
+   dejan intactos (a 28-36px la legibilidad ya no es el problema). */
+@media (pointer: coarse) {
+  :root {
+    --text-2xs: 0.75rem;   /* 11 → 12 */
+    --text-xs:  0.8125rem; /* 12 → 13 */
+    --text-sm:  0.9375rem; /* 13 → 15 — labels, nav, breadcrumb */
+    --text-base:1rem;      /* 14 → 16 — base UI */
+    --text-md:  1.0625rem; /* 15 → 17 */
+    --text-lg:  1.1875rem; /* 17 → 19 */
+    /* --text-xl / 2xl / 3xl sin cambio: ya son legibles a distancia táctil */
+  }
+}

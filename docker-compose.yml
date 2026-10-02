@@ -1,0 +1,29 @@
+# Docker es OPCIONAL en este proyecto. Ver la sección 6 del README.
+#
+#   Desarrollo (hot-reload):   docker compose up dev      -> http://localhost:5173
+#   Producción (build+Nginx):  docker compose up --build web  -> http://localhost:8085
+
+services:
+  # Servidor de desarrollo con recarga automática.
+  dev:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "corepack enable && pnpm install && pnpm dev --host 0.0.0.0"
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    environment:
+      # Necesario para que el hot-reload detecte cambios dentro del contenedor.
+      - CHOKIDAR_USEPOLLING=true
+
+  # Build de producción servido por Nginx.
+  web:
+    build:
+      context: .
+      target: web
+    ports:
+      - "8085:80"

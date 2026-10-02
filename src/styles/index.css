@@ -1,0 +1,7 @@
+/* Tokens primero: definen las variables CSS y las bases del tema.
+   Luego Tailwind, para que las utilidades puedan sobreescribir en componentes. */
+@import "./tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

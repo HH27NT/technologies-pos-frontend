@@ -1,0 +1,10 @@
+export { PermissionGate } from "./PermissionGate";
+export { PageHeader } from "./PageHeader";
+export { EmptyState } from "./EmptyState";
+export { ErrorState } from "./ErrorState";
+export { RutaError } from "./RutaError";
+export { ConfirmDialog } from "./ConfirmDialog";
+export { DataTable, type ColumnDef } from "./DataTable";
+export { EstadoPill } from "./EstadoPill";
+export { InputNumerico, type InputNumericoProps } from "./InputNumerico";
+export { FiltroPills, type OpcionFiltro } from "./FiltroPills";
